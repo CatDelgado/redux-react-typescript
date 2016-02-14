@@ -10,7 +10,11 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const PORT = 3000;
 
 const webpackConfig = {
-  entry: ['webpack-hot-middleware/client', './index.js'],
+  resolve: {
+    // Add `.ts` and `.tsx` as a resolvable extension.
+    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+  },
+  entry: ['webpack-hot-middleware/client', './index.ts'],
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '/assets/',
@@ -26,6 +30,10 @@ const webpackConfig = {
       {
         test: /\.css$/,
         loader: "style!css"
+      },
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader'
       }
     ]
   }
