@@ -4,7 +4,7 @@
   "description": "Contacts MVC implementation in Redux and React",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --inline --no-info",
+    "start": "./server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mohsen Azimi <me@azimi.me>",
