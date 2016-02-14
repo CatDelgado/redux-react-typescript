@@ -20,7 +20,15 @@ const webpackConfig = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
-  ]
+  ],
+  module: {
+    loaders: [
+      {
+        test: /\.css$/,
+        loader: "style!css"
+      }
+    ]
+  }
 };
 
 const compiler = webpack(webpackConfig);
