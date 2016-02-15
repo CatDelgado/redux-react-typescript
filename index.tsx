@@ -5,8 +5,10 @@ import 'contacts-mvc-css/index.css';
 
 import * as React from 'react';
 import {render} from 'react-dom';
+import {Provider} from 'react-redux';
 
-import TEMPLATE from './template';
+import App from './containers/app';
+import store from './store/store';
 
-render(TEMPLATE, document.getElementById('root'));
+render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 
