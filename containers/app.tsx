@@ -3,8 +3,9 @@ import {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
+import AppState from '../state/AppState';
+
 interface AppProps {};
-interface AppState {};
 
 class App extends Component<AppProps, AppState> {
   static PropTypes: AppProps = {};
