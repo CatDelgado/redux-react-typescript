@@ -1,13 +1,15 @@
-# Contacts MVC Redux/React implementation
+# Contacts MVC Redux/React Implementation
 
-> [Contacts MVC]()implemented in React and Redux
+> [Contacts MVC](https://github.com/contacts-mvc) implemented in React and Redux
 
 ### Running locally
 
-```
-git clone git@github.com:contacts-mvc/redux-react.git
-cd redux-react
+1. Install dependencies
+```shell
 npm install
+```
+2. Run the development server
+```shell
 npm start
 ```
 
