@@ -23,7 +23,7 @@
     "webpack-hot-middleware": "^2.7.1"
   },
   "dependencies": {
-    "contacts-mvc-css": "^1.1.0",
+    "contacts-mvc-css": "^1.2.0",
     "reset-css": "^2.0.2011012603"
   }
 }
