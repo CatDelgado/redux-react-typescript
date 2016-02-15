@@ -4,16 +4,32 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 import AppState from '../state/AppState';
+import * as Actions from '../actions/index';
 
-interface AppProps {};
+import SearchBox from '../components/SearchBox';
+import ContactsList from '../components/ContactsList';
+import ContactDetails from '../components/ContactDetails';
+
+interface AppProps {
+  actions?;
+};
 
 class App extends Component<AppProps, AppState> {
+  props: AppProps;
   static PropTypes: AppProps = {};
+
   render() {
+    const {actions} = this.props;
     return (
       <div className="container">
         <header className="main-header"></header>
-        <main></main>
+        <main>
+          <aside className="side-bar">
+            <SearchBox />
+            <ContactsList />
+          </aside>
+          <ContactDetails />
+        </main>
         <footer className="main-footer"></footer>
       </div>
     );
@@ -22,12 +38,12 @@ class App extends Component<AppProps, AppState> {
 
 
 function mapStateToProps(state: AppState): AppState {
-  return {};
+  return state;
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    // actions: bindActionCreators()
+    actions: bindActionCreators(Actions, dispatch)
   };
 }
 

@@ -1,6 +1,6 @@
-interface UUID extends String {}
+export interface UUID extends String {}
 
-interface Contact {} // TODO
+export interface Contact {} // TODO
 
 interface AppState {
   search: string;
@@ -11,4 +11,5 @@ interface AppState {
 }
 
 export default AppState;
+
 

@@ -1,4 +1,7 @@
 import {createStore} from 'redux';
 
-// TODO
-export default createStore(()=>{}, {});
+import mainReducer from '../reducers/index';
+import {initialState} from '../reducers/index';
+
+
+export default createStore(mainReducer, initialState);
