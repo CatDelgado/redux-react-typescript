@@ -5,13 +5,13 @@
 ### Running locally
 
 1. Install dependencies
-```shell
-npm install
-```
+  ```shell
+  npm stall
+  ```
 2. Run the development server
-```shell
-npm start
-```
+  ```shell
+  npm start
+  ```
 
 ## License
 MIT
