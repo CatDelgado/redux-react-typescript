@@ -1,4 +1,4 @@
-import {UUID} from '../state/AppState';
+import UUID from '../interfaces/UUID';
 import ActionTypes from '../constants/ActionTypes';
 
 interface Action {

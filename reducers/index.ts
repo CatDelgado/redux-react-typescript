@@ -1,10 +1,12 @@
-import AppState from '../state/AppState';
+import AppState from '../interfaces/AppState';
+
+import {CONTACTS} from './contacts';
 
 export const initialState: AppState = {
   search: '',
-  selectedContact: null,
-  contacts: [],
-  currentContact: null,
+  selectedContactId: null,
+  contacts: CONTACTS,
+  currentContact: CONTACTS[0],
   isEditing: false
 };
 

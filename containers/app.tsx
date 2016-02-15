@@ -1,25 +1,22 @@
 import * as React from 'react';
-import {Component} from 'react';
+import {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
-import AppState from '../state/AppState';
+import AppState from '../interfaces/AppState';
+import Contact from '../interfaces/Contact';
 import * as Actions from '../actions/index';
 
 import SearchBox from '../components/SearchBox';
 import ContactsList from '../components/ContactsList';
 import ContactDetails from '../components/ContactDetails';
 
-interface AppProps {
+interface AppProps extends AppState {
   actions?;
 };
 
 class App extends Component<AppProps, AppState> {
-  props: AppProps;
-  static PropTypes: AppProps = {};
-
   render() {
-    const {actions} = this.props;
     return (
       <div className="container">
         <header className="main-header"></header>
@@ -28,14 +25,17 @@ class App extends Component<AppProps, AppState> {
             <SearchBox />
             <ContactsList />
           </aside>
-          <ContactDetails />
+          <ContactDetails contact={this.selectedContact}/>
         </main>
         <footer className="main-footer"></footer>
       </div>
     );
   }
-}
 
+  get selectedContact(): Contact {
+    return this.props.contacts.filter(contact => contact.id === this.props.selectedContactId)[0];
+  }
+}
 
 function mapStateToProps(state: AppState): AppState {
   return state;

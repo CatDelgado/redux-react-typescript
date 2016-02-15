@@ -1,7 +1,11 @@
 import * as React from 'react';
 import {Component} from 'react';
 
-interface ContactDetailsProps {}
+import Contact from '../interfaces/contact';
+
+interface ContactDetailsProps {
+  contact: Contact
+}
 interface ContactDetailsState {}
 
 export default class ContactDetails extends Component<ContactDetailsProps, ContactDetailsState> {
