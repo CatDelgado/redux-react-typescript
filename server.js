@@ -14,7 +14,7 @@ const webpackConfig = {
     // Add `.ts` and `.tsx` as a resolvable extension.
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
   },
-  entry: ['webpack-hot-middleware/client', './index.ts'],
+  entry: ['webpack-hot-middleware/client', './index.tsx'],
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '/assets/',
