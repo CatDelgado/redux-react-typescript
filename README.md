@@ -5,10 +5,12 @@
 ### Running locally
 
 1. Install dependencies
+
   ```shell
   npm stall
   ```
 2. Run the development server
+
   ```shell
   npm start
   ```
