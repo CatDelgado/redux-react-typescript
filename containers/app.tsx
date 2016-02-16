@@ -23,7 +23,7 @@ class App extends Component<AppProps, AppState> {
         <main>
           <aside className="side-bar">
             <SearchBox value={this.props.search} />
-            <ContactsList />
+            <ContactsList contacts={this.props.contacts}/>
           </aside>
           <ContactDetails contact={this.selectedContact}/>
         </main>
