@@ -1,7 +1,9 @@
 import * as React from 'react';
 import {Component} from 'react';
+import {v4 as generateUUID} from 'node-uuid';
 
 import Contact from '../interfaces/Contact';
+import UUID from '../interfaces/UUID';
 
 interface ContactsListProps {
   contacts: Array<Contact>
@@ -10,7 +12,10 @@ interface ContactsListState {}
 
 class Divider {
   public isDivider: boolean = true;
-  constructor (public charchtar: string) {}
+  public id: UUID;
+  constructor (public charchtar: string) {
+    this.id = generateUUID();
+  }
 }
 
 export default class ContactsList extends Component<ContactsListProps, ContactsListState> {
@@ -27,14 +32,12 @@ export default class ContactsList extends Component<ContactsListProps, ContactsL
         <ul>
           {this.contactsAndDividers.map(item => {
             if (item instanceof Divider) {
-             return <li className="divider">{item.charchtar}</li>
+             return <li className="divider" key={item.id.toString()}>{item.charchtar}</li>
             }
-
-            // TODO: fix me. URL: http://stackoverflow.com/questions/35422600/how-to-use-an-instance-with-type-of-union-of-interfaces-in-typescript
-            // const {firstName, lastName} = item;
-            const {firstName, lastName} = {firstName: 'Peter', lastName: 'Griffin'}
-
-            return <li>{firstName}&nbsp;<em>{lastName}</em></li>
+            const contact = item as Contact;
+            return <li className="selected" key={contact.id.toString()}>
+                    {contact.firstName}&nbsp;<em>{contact.lastName}</em>
+                   </li>
           })}
         </ul>
       </div>
