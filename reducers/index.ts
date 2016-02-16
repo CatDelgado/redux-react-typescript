@@ -3,7 +3,7 @@ import AppState from '../interfaces/AppState';
 import {CONTACTS} from './contacts';
 
 export const initialState: AppState = {
-  search: '',
+  search: 'Hello world!',
   selectedContactId: null,
   contacts: CONTACTS,
   currentContact: CONTACTS[0],

@@ -22,7 +22,7 @@ class App extends Component<AppProps, AppState> {
         <header className="main-header"></header>
         <main>
           <aside className="side-bar">
-            <SearchBox />
+            <SearchBox value={this.props.search} />
             <ContactsList />
           </aside>
           <ContactDetails contact={this.selectedContact}/>
@@ -37,11 +37,11 @@ class App extends Component<AppProps, AppState> {
   }
 }
 
-function mapStateToProps(state: AppState): AppState {
+function mapStateToProps(state: AppState): AppProps {
   return state;
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch): AppProps {
   return {
     actions: bindActionCreators(Actions, dispatch)
   };
