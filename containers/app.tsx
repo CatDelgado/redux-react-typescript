@@ -12,7 +12,7 @@ import ContactsList from '../components/ContactsList';
 import ContactDetails from '../components/ContactDetails';
 
 interface AppProps extends AppState {
-  actions?;
+  actions?: any
 };
 
 class App extends Component<AppProps, AppState> {
@@ -22,7 +22,7 @@ class App extends Component<AppProps, AppState> {
         <header className="main-header"></header>
         <main>
           <aside className="side-bar">
-            <SearchBox value={this.props.search} />
+            <SearchBox query={this.props.search} changeSearch={this.props.actions.changeSearch}/>
             <ContactsList contacts={this.props.contacts}/>
           </aside>
           <ContactDetails contact={this.selectedContact}/>

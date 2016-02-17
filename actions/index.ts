@@ -12,3 +12,10 @@ export function selectContact(contactId: UUID): Action {
     payload: contactId
   };
 }
+
+export function changeSearch(query: string): Action {
+  return {
+    type: ActionTypes.CHANGE_SEARCH,
+    payload: query
+  }
+}

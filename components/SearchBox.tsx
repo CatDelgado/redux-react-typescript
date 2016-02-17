@@ -2,12 +2,26 @@ import * as React from 'react';
 import {Component} from 'react';
 
 interface SearchBoxProps {
-  value: string;
+  query: string;
+  changeSearch: ()=>{}
 }
-interface SearchBoxState {}
+interface SearchBoxState {
+  query: string;
+}
 
 export default class SearchBox extends Component<SearchBoxProps, SearchBoxState> {
-  handleValueChange(){}
+
+  constructor(props: SearchBoxProps, context) {
+    super(props, context);
+    this.state = {
+      query: props.query || ''
+    };
+  }
+
+  handleChange(event: React.SyntheticEvent) {
+    const target = event.target as HTMLInputElement;
+    this.setState({query: target.value});
+  }
 
   render() {
     return (
@@ -15,8 +29,8 @@ export default class SearchBox extends Component<SearchBoxProps, SearchBoxState>
         <input
           type="search"
           placeholder="Search..."
-          value={this.props.value}
-          onChange={this.handleValueChange}/>
+          value={this.state.query}
+          onChange={this.handleChange.bind(this)}/>
       </div>
     );
   }
