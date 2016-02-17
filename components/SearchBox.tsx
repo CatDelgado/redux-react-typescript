@@ -3,7 +3,7 @@ import {Component} from 'react';
 
 interface SearchBoxProps {
   query: string;
-  changeSearch: ()=>{}
+  changeSearch: (query: string)=>{}
 }
 interface SearchBoxState {
   query: string;
@@ -11,16 +11,9 @@ interface SearchBoxState {
 
 export default class SearchBox extends Component<SearchBoxProps, SearchBoxState> {
 
-  constructor(props: SearchBoxProps, context) {
-    super(props, context);
-    this.state = {
-      query: props.query || ''
-    };
-  }
-
   handleChange(event: React.SyntheticEvent) {
     const target = event.target as HTMLInputElement;
-    this.setState({query: target.value});
+    this.props.changeSearch(target.value);
   }
 
   render() {
@@ -29,7 +22,7 @@ export default class SearchBox extends Component<SearchBoxProps, SearchBoxState>
         <input
           type="search"
           placeholder="Search..."
-          value={this.state.query}
+          value={this.props.query}
           onChange={this.handleChange.bind(this)}/>
       </div>
     );

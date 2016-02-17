@@ -20,17 +20,19 @@ interface AppProps extends AppState {
 
 class App extends Component<AppProps, AppState> {
 
-
   render() {
     return (
       <div className="container">
         <header className="main-header"></header>
         <main>
           <aside className="side-bar">
-            <SearchBox query={this.props.search} changeSearch={this.props.actions.changeSearch}/>
-            <ContactsList selectContact={this.props.actions.selectContact} contacts={this.props.contacts}/>
+            <SearchBox query={this.props.search} changeSearch={this.props.actions.changeSearch} />
+            <ContactsList
+              selectedContactId={this.props.selectedContactId.toString()}
+              selectContact={this.props.actions.selectContact}
+              contacts={this.props.contacts} />
           </aside>
-          <ContactDetails contact={this.selectedContact}/>
+          <ContactDetails contact={this.selectedContact} />
         </main>
         <footer className="main-footer"></footer>
       </div>

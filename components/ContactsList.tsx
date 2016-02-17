@@ -2,12 +2,16 @@ import * as React from 'react';
 import {Component} from 'react';
 import {v4 as generateUUID} from 'node-uuid';
 
+// TODO: fix my TSD issue so it can be imported via import
+const classnames = require('classnames');
+
 import Contact from '../interfaces/Contact';
 import UUID from '../interfaces/UUID';
 
 interface ContactsListProps {
-  contacts: Array<Contact>,
-  selectContact: (contactId: string)=>{}
+  contacts: Array<Contact>;
+  selectedContactId: string;
+  selectContact: (contactId: string)=>{};
 }
 interface ContactsListState {}
 
@@ -31,6 +35,10 @@ export default class ContactsList extends Component<ContactsListProps, ContactsL
     this.props.selectContact(id);
   }
 
+  isSelected(contact: Contact): boolean {
+    return contact.id === this.props.selectedContactId;
+  }
+
   render() {
     return (
       <div className="list">
@@ -41,7 +49,7 @@ export default class ContactsList extends Component<ContactsListProps, ContactsL
             }
             const contact = item as Contact;
             return <li
-                      className="selected"
+                      className={classnames({selected: this.isSelected(contact)})}
                       key={contact.id.toString()}
                       onClick={this.handleClick.bind(this, contact.id.toString())} >
                     {contact.firstName}&nbsp;<em>{contact.lastName}</em>
