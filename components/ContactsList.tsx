@@ -23,6 +23,24 @@ class Divider {
   }
 }
 
+class ContactListDivider extends Component<{charchtar: string; key: string}, {}> {
+  render() {
+    return (<li key={this.props.key} className="divider">{this.props.charchtar}</li>);
+  }
+}
+
+class ContactListItem extends Component<{contact: Contact; isSelected: boolean; key: string; onClick: ()=>{}}, {}> {
+  render() {
+    const contact = this.props.contact;
+    return (<li
+              key={this.props.key}
+              className={classnames({selected: this.props.isSelected})}
+              onClick={this.props.onClick} >
+                {contact.firstName}&nbsp;<em>{contact.lastName}</em>
+          </li>);
+  }
+}
+
 export default class ContactsList extends Component<ContactsListProps, ContactsListState> {
 
   get contactsAndDividers(): Array<Divider | Contact> {
@@ -45,15 +63,15 @@ export default class ContactsList extends Component<ContactsListProps, ContactsL
         <ul>
           {this.contactsAndDividers.map(item => {
             if (item instanceof Divider) {
-             return <li className="divider" key={item.id.toString()}>{item.charchtar}</li>
+             return <ContactListDivider key={item.id.toString()} charchtar={item.charchtar} />
             }
             const contact = item as Contact;
-            return <li
-                      className={classnames({selected: this.isSelected(contact)})}
+            return <ContactListItem
                       key={contact.id.toString()}
-                      onClick={this.handleClick.bind(this, contact.id.toString())} >
-                    {contact.firstName}&nbsp;<em>{contact.lastName}</em>
-                   </li>
+                      contact={contact}
+                      isSelected={this.isSelected(contact)}
+                      onClick={this.handleClick.bind(this, contact.id.toString())} />
+
           })}
         </ul>
       </div>
