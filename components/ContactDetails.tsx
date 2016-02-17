@@ -10,12 +10,7 @@ interface ContactDetailsState {
   contact: Contact
 }
 
-export default class ContactDetails extends Component<ContactDetailsProps, ContactDetailsState> {
-
-  constructor(props: ContactDetailsProps, context) {
-    super(props, context);
-  }
-
+class ProfilePicture extends Component<{contact: Contact}, {}> {
   get initials(): string {
     const contact = this.props.contact;
     let initials = '';
@@ -43,6 +38,25 @@ export default class ContactDetails extends Component<ContactDetailsProps, Conta
     return null;
   }
 
+  render() {
+    const pictureStyles: React.CSSProperties = {};
+    let initials = null;
+
+    if (this.profilePictureUrl) {
+      pictureStyles.backgroundImage = `url("${this.profilePictureUrl}")`
+    } else {
+      initials = (<div className="initials">{this.initials}</div>)
+    }
+
+    return (<div className="picture" style={pictureStyles}>{initials}</div>);
+  }
+}
+
+export default class ContactDetails extends Component<ContactDetailsProps, ContactDetailsState> {
+
+  constructor(props: ContactDetailsProps, context) {
+    super(props, context);
+  }
 
   render() {
     const contact = this.props.contact;
@@ -54,14 +68,7 @@ export default class ContactDetails extends Component<ContactDetailsProps, Conta
     return (
       <div className="details">
         <header>
-          <div className="picture" style={{backgroundImage: `url("${this.profilePictureUrl}")`}}>
-            {(()=>{
-              // TODO: move me to a component
-              if (!this.profilePictureUrl) {
-                return <div className="initials">{this.initials}</div>
-              }
-            })()}
-          </div>
+          <ProfilePicture contact={contact} />
           <div className="title">
             <h1 className="name">{contact.firstName}&nbsp;{contact.lastName}</h1>
             <div className="subtitle">{contact.nickName}</div>
