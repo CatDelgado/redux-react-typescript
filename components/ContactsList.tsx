@@ -6,7 +6,8 @@ import Contact from '../interfaces/Contact';
 import UUID from '../interfaces/UUID';
 
 interface ContactsListProps {
-  contacts: Array<Contact>
+  contacts: Array<Contact>,
+  selectContact: (contactId: string)=>{}
 }
 interface ContactsListState {}
 
@@ -26,6 +27,10 @@ export default class ContactsList extends Component<ContactsListProps, ContactsL
     return [divider, ...this.props.contacts]
   }
 
+  handleClick(id: string) {
+    this.props.selectContact(id);
+  }
+
   render() {
     return (
       <div className="list">
@@ -35,7 +40,10 @@ export default class ContactsList extends Component<ContactsListProps, ContactsL
              return <li className="divider" key={item.id.toString()}>{item.charchtar}</li>
             }
             const contact = item as Contact;
-            return <li className="selected" key={contact.id.toString()}>
+            return <li
+                      className="selected"
+                      key={contact.id.toString()}
+                      onClick={this.handleClick.bind(this, contact.id.toString())} >
                     {contact.firstName}&nbsp;<em>{contact.lastName}</em>
                    </li>
           })}

@@ -5,7 +5,6 @@ interface AppState {
   search?: string;
   selectedContactId?: UUID;
   contacts?: Array<Contact>;
-  currentContact?: Contact;
   isEditing?: boolean;
 }
 

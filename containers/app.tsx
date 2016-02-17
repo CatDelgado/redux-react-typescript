@@ -12,10 +12,15 @@ import ContactsList from '../components/ContactsList';
 import ContactDetails from '../components/ContactDetails';
 
 interface AppProps extends AppState {
-  actions?: any
-};
+  actions?: {
+    changeSearch: ()=> {};
+    selectContact: ()=> {};
+  }
+}
 
 class App extends Component<AppProps, AppState> {
+
+
   render() {
     return (
       <div className="container">
@@ -23,7 +28,7 @@ class App extends Component<AppProps, AppState> {
         <main>
           <aside className="side-bar">
             <SearchBox query={this.props.search} changeSearch={this.props.actions.changeSearch}/>
-            <ContactsList contacts={this.props.contacts}/>
+            <ContactsList selectContact={this.props.actions.selectContact} contacts={this.props.contacts}/>
           </aside>
           <ContactDetails contact={this.selectedContact}/>
         </main>
@@ -32,6 +37,7 @@ class App extends Component<AppProps, AppState> {
     );
   }
 
+  // Move me to a reducer
   get selectedContact(): Contact {
     return this.props.contacts.filter(contact => contact.id === this.props.selectedContactId)[0];
   }
@@ -41,7 +47,7 @@ function mapStateToProps(state: AppState): AppProps {
   return state;
 }
 
-function mapDispatchToProps(dispatch): AppProps {
+function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(Actions, dispatch)
   };

@@ -1,6 +1,11 @@
 // TODO: REMOVE ME WHEN BACKEDN SERVER IS WORKING
 export const CONTACTS = [
     {
+      id: 'dasdas-sdasd-qeqsd-sdasd',
+      firstName: 'Homer',
+      lastName: 'Simpson'
+    },
+    {
        "id": '9bf34709-6151-439c-a741-9fc455430b11',
         "firstName": "Peter",
         "lastName": "Griffin",

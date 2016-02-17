@@ -1,10 +1,6 @@
 import UUID from '../interfaces/UUID';
+import Action from '../interfaces/Action';
 import ActionTypes from '../constants/ActionTypes';
-
-interface Action {
-  type: ActionTypes;
-  payload: {}
-}
 
 export function selectContact(contactId: UUID): Action {
   return  {
