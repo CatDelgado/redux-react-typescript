@@ -10,7 +10,7 @@ import UUID from '../interfaces/UUID';
 
 interface ContactsListProps {
   contacts: Array<Contact>;
-  selectedContactId: string;
+  selectedContactId: string | UUID;
   selectContact: (contactId: string)=>{};
 }
 interface ContactsListState {}

@@ -28,7 +28,7 @@ class App extends Component<AppProps, AppState> {
           <aside className="side-bar">
             <SearchBox query={this.props.search} changeSearch={this.props.actions.changeSearch} />
             <ContactsList
-              selectedContactId={this.props.selectedContactId.toString()}
+              selectedContactId={this.props.selectedContactId}
               selectContact={this.props.actions.selectContact}
               contacts={this.props.contacts} />
           </aside>
