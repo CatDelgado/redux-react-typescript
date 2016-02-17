@@ -47,6 +47,10 @@ export default class ContactDetails extends Component<ContactDetailsProps, Conta
   render() {
     const contact = this.props.contact;
 
+    if (!contact) {
+      return (<div></div>);
+    }
+
     return (
       <div className="details">
         <header>
