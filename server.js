@@ -7,6 +7,8 @@ const webpack = require('webpack');
 const webpackDevelopmentMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
+const apiServer = require('contacts-mvc-api-server');
+
 const PORT = 3000;
 
 const webpackConfig = {
@@ -50,6 +52,8 @@ app.use(webpackDevelopmentMiddleware(compiler, {
   noInfo: true
 }));
 app.use(webpackHotMiddleware(compiler));
+
+app.use('/api', apiServer);
 
 
 app.listen(PORT, error=> {

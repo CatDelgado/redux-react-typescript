@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.3",
+    "contacts-mvc-api-server": "0.0.1",
     "contacts-mvc-css": "^1.2.0",
     "node-uuid": "^1.4.7",
     "reset-css": "^2.0.2011012603"
