@@ -41,12 +41,30 @@ class ContactListItem extends Component<{contact: Contact; isSelected: boolean; 
   }
 }
 
+type DividerOrContact = Divider | Contact;
+
 export default class ContactsList extends Component<ContactsListProps, ContactsListState> {
 
-  get contactsAndDividers(): Array<Divider | Contact> {
-    // Big TODO
-    const divider = new Divider('P');
-    return [divider, ...this.props.contacts]
+  get contactsAndDividers(): Array<DividerOrContact> {
+    const contacts = this.props.contacts;
+    const result: Array<DividerOrContact> = [];
+
+    if (!contacts.length) return [];
+
+    result.push(new Divider(contacts[0].firstName.charAt(0)));
+
+    for (let i = 0; i < contacts.length; i++) {
+      const element = contacts[i];
+      const nextElement = contacts[i+1];
+
+      result.push(element);
+
+      if (nextElement && (nextElement.firstName.charAt(0) !== element.firstName.charAt(0))) {
+        result.push(new Divider(nextElement.firstName.charAt(0)));
+      }
+    }
+
+    return result;
   }
 
   handleClick(id: string) {
