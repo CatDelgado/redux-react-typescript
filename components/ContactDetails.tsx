@@ -39,16 +39,15 @@ class ProfilePicture extends Component<{contact: Contact}, {}> {
   }
 
   render() {
-    const pictureStyles: React.CSSProperties = {};
-    let initials = null;
+    let inner = null;
 
     if (this.profilePictureUrl) {
-      pictureStyles.backgroundImage = `url("${this.profilePictureUrl}")`
+      inner = <img className="profile-picture" src={this.profilePictureUrl} />
     } else {
-      initials = (<div className="initials">{this.initials}</div>)
+      inner = (<div className="initials">{this.initials}</div>)
     }
 
-    return (<div className="picture" style={pictureStyles}>{initials}</div>);
+    return (<div className="picture">{inner}</div>);
   }
 }
 
