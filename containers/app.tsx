@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {assign} from 'lodash';
 
 import AppState from '../interfaces/AppState';
 import Contact from '../interfaces/Contact';
