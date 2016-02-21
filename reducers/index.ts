@@ -1,3 +1,5 @@
+import {assign} from 'lodash';
+
 import AppState from '../interfaces/AppState';
 import ActionTypes from '../constants/ActionTypes';
 import Action from '../interfaces/Action';
@@ -24,22 +26,17 @@ export default function mainReducer(state: AppState = initialState, action: Acti
         selectedContactId = filteredContacts[0].id;
       }
 
-      return {
+      return assign({}, state, {
         search: action.payload.toString(),
         selectedContactId,
-        contacts: filteredContacts,
-        isEditing: state.isEditing
-      };
+        contacts: filteredContacts
+      });
 
     case ActionTypes.SELECT_CONTACT:
 
-      // TODO: use Object.assign
-      return {
-        search: state.search,
+      return assign({}, state, {
         selectedContactId: action.payload,
-        contacts: state.contacts,
-        isEditing: state.isEditing
-      };
+      });
 
     default:
       return state;
