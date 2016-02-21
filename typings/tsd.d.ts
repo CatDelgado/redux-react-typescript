@@ -8,3 +8,6 @@
 /// <reference path="node-uuid/node-uuid.d.ts" />
 /// <reference path="node/node.d.ts" />
 /// <reference path="classnames/classnames.d.ts" />
+/// <reference path="react-router/history.d.ts" />
+/// <reference path="react-router/react-router.d.ts" />
+/// <reference path="react-router-redux/react-router-redux.d.ts" />
