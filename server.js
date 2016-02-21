@@ -2,7 +2,7 @@
 'use strict';
 
 const path = require('path');
-const express = require('express');
+const Express = require('express');
 const webpack = require('webpack');
 const webpackDevelopmentMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
@@ -12,6 +12,7 @@ const apiServer = require('contacts-mvc-api-server');
 const PORT = 3000;
 
 const webpackConfig = {
+  devtoo: 'cheap-module-source-map',
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
@@ -42,9 +43,7 @@ const webpackConfig = {
 };
 
 const compiler = webpack(webpackConfig);
-
-
-const app = express();
+const app = new Express();
 
 app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 app.use(webpackDevelopmentMiddleware(compiler, {
