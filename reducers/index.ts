@@ -16,9 +16,7 @@ export default function mainReducer(state: AppState = initialState, action: Acti
 
   switch (action.type) {
     case ActionTypes.CHANGE_SEARCH:
-      const filteredContacts = CONTACTS.filter(contact=>
-         match(contact, action.payload.toString())
-      );
+      const filteredContacts = CONTACTS.filter(contact=> match(contact, action.payload.toString()));
 
       let selectedContactId = null;
 
@@ -48,8 +46,12 @@ export default function mainReducer(state: AppState = initialState, action: Acti
   }
 }
 
-// TODO: make it smarter
+/**
+ * @param  {Contact} contact
+ * @param  {string} query
+ * @returns boolean
+ */
 function match(contact:Contact, query: string): boolean {
-  return (contact.firstName && contact.firstName.indexOf(query) > -1) ||
-    (contact.lastName && contact.lastName.indexOf(query) > -1);
+  return (contact.firstName && contact.firstName.toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) > -1) ||
+    (contact.lastName && contact.lastName.toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) > -1);
 }
