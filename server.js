@@ -46,7 +46,6 @@ const compiler = webpack(webpackConfig);
 
 const app = express();
 
-app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 app.use(webpackDevelopmentMiddleware(compiler, {
   publicPath: webpackConfig.output.publicPath,
   noInfo: true
@@ -54,6 +53,7 @@ app.use(webpackDevelopmentMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler));
 
 app.use('/api', apiServer);
+app.get('*', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 
 
 app.listen(PORT, error=> {
